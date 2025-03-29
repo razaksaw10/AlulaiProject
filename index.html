@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alulai International Trade | Négoce de matières premières</title>
     <link rel="stylesheet" href="index.css">
-    
 </head>
 <body>
     <!-- Header -->
@@ -14,6 +13,12 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">Alulai International Trade</div>
+                <!-- Bouton Hamburger -->
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <div class="nav-links">
                     <a href="#accueil" class="lang" key="home">Accueil</a>
                     <a href="#apropos" class="lang" key="about">À propos</a>
@@ -25,10 +30,12 @@
                         <button onclick="changeLanguage('en')">EN</button>
                     </div>
                 </div>
-                </div>
             </nav>
         </div>
     </header>
+
+
+
 
     <!-- Hero Section -->
     <section id="accueil" class="hero">
@@ -139,7 +146,7 @@
             </div>
     
             <div class="process-steps">
-                <!-- Étape 1 -->
+                <!--- Étape 1 --->
                 <div class="process-step">
                     <div class="step-number">1</div>
                     <div class="step-content">
@@ -215,7 +222,7 @@
         <div class="container">
             <h2 class="lang" key="ready_to_collab">Prêt à collaborer ?</h2>
             <p class="lang" key="contact_text">Contactez-nous pour des solutions sur mesure en négoce international.</p>
-            <a href="https://wa.me/905364704110" class="btn lang" key="whatsapp_btn">Contact WhatsApp</a>
+            <a href="#" class="btn lang" key="whatsapp_btn">Contact WhatsApp</a>
         </div>
     </section>
 
@@ -258,6 +265,8 @@
         </div>
     </footer>
 
+    <!-- Le reste de votre code HTML reste inchangé jusqu'au script -->
+    
     <!-- Script de traduction -->
     <script>
         // Dictionnaire de traductions
@@ -292,13 +301,25 @@
                 rights: "Tous droits réservés.",
                 product3_name: "Minerais de Fer",
                 grade: "Grade:",
-
-                // Dictionnaire de traductions
-
-   
-        //
-    
-
+                about_us: "À Propos de Nous",
+                our_story: "Notre Histoire",
+                our_mission: "Notre Mission",
+                about_text1: "Fondée en 20XX, Alulai International Trade s'est imposée comme un acteur clé dans le négoce international de matières premières...",
+                about_text2: "Notre mission est de fournir des solutions d'approvisionnement fiables et efficaces à nos clients mondiaux...",
+                learn_more: "En savoir plus",
+                collab_process: "Processus de Collaboration",
+                process_subtitle: "Notre approche structurée pour des partenariats réussis",
+                step1_title: "Demande Initiale",
+                step1_text: "Contactez-nous via le formulaire, email ou WhatsApp pour discuter de vos besoins.",
+                step2_title: "Analyse des Besoins",
+                step2_text: "Notre équipe évalue vos spécifications techniques et quantités requises.",
+                step3_title: "Proposition Commerciale",
+                step3_text: "Nous vous envoyons un devis détaillé avec prix, conditions et délais.",
+                step4_title: "Validation & Contrat",
+                step4_text: "Signature du contrat et planification logistique.",
+                step5_title: "Livraison & Suivi",
+                step5_text: "Exécution et suivi continu jusqu'à réception finale.",
+                start_collab: "Démarrer la Collaboration"
             },
             en: {
                 product3_name: "Iron Ore",
@@ -329,12 +350,26 @@
                 oil: "Oil",
                 minerals: "Minerals",
                 social_media: "Social Media",
-                rights: "All rights reserved."
-
-              
-
-        
-    
+                rights: "All rights reserved.",
+                about_us: "About Us",
+                our_story: "Our Story",
+                our_mission: "Our Mission",
+                about_text1: "Founded in 20XX, Alulai International Trade has established itself as a key player in international commodity trading...",
+                about_text2: "Our mission is to provide reliable and efficient sourcing solutions to our global clients...",
+                learn_more: "Learn more",
+                collab_process: "Collaboration Process",
+                process_subtitle: "Our structured approach for successful partnerships",
+                step1_title: "Initial Request",
+                step1_text: "Contact us via form, email or WhatsApp to discuss your needs.",
+                step2_title: "Needs Assessment",
+                step2_text: "Our team evaluates your technical specifications and required quantities.",
+                step3_title: "Commercial Proposal",
+                step3_text: "We send you a detailed quote with pricing, terms and timelines.",
+                step4_title: "Validation & Contract",
+                step4_text: "Contract signing and logistics planning.",
+                step5_title: "Delivery & Follow-up",
+                step5_text: "Execution and continuous follow-up until final receipt.",
+                start_collab: "Start Collaboration"
             }
         };
 
@@ -362,72 +397,36 @@
             document.documentElement.lang = lang;
         }
 
+        // Fonction pour le menu hamburger
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            
+            // Empêche le défilement lorsque le menu est ouvert
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Fermer le menu lorsqu'un lien est cliqué (pour mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+
         // Charger la langue sauvegardée ou FR par défaut
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('language') || 'fr';
             changeLanguage(savedLang);
         });
-
-
-        
-            // Ajoutez ces traductions à votre objet translations
-            if (typeof translations !== 'undefined') {
-                translations.fr.about_us = "À Propos de Nous";
-                translations.fr.our_story = "Notre Histoire";
-                translations.fr.our_mission = "Notre Mission";
-                translations.fr.about_text1 = "Fondée en 20XX, Alulai International Trade s'est imposée comme un acteur clé dans le négoce international de matières premières...";
-                translations.fr.about_text2 = "Notre mission est de fournir des solutions d'approvisionnement fiables et efficaces à nos clients mondiaux...";
-                translations.fr.learn_more = "En savoir plus";
-                
-                translations.en.about_us = "About Us";
-                translations.en.our_story = "Our Story";
-                translations.en.our_mission = "Our Mission";
-                translations.en.about_text1 = "Founded in 20XX, Alulai International Trade has established itself as a key player in international commodity trading...";
-                translations.en.about_text2 = "Our mission is to provide reliable and efficient sourcing solutions to our global clients...";
-                translations.en.learn_more = "Learn more";
-            }
-        
-            if (typeof translations !== 'undefined') {
-                // Français
-                translations.fr.collab_process = "Processus de Collaboration";
-                translations.fr.process_subtitle = "Notre approche structurée pour des partenariats réussis";
-                translations.fr.step1_title = "Demande Initiale";
-                translations.fr.step1_text = "Contactez-nous via le formulaire, email ou WhatsApp pour discuter de vos besoins.";
-                translations.fr.step2_title = "Analyse des Besoins";
-                translations.fr.step2_text = "Notre équipe évalue vos spécifications techniques et quantités requises.";
-                translations.fr.step3_title = "Proposition Commerciale";
-                translations.fr.step3_text = "Nous vous envoyons un devis détaillé avec prix, conditions et délais.";
-                translations.fr.step4_title = "Validation & Contrat";
-                translations.fr.step4_text = "Signature du contrat et planification logistique.";
-                translations.fr.step5_title = "Livraison & Suivi";
-                translations.fr.step5_text = "Exécution et suivi continu jusqu'à réception finale.";
-                translations.fr.start_collab = "Démarrer la Collaboration";
-        
-                // Anglais
-                translations.en.collab_process = "Collaboration Process";
-                translations.en.process_subtitle = "Our structured approach for successful partnerships";
-                translations.en.step1_title = "Initial Request";
-                translations.en.step1_text = "Contact us via form, email or WhatsApp to discuss your needs.";
-                translations.en.step2_title = "Needs Assessment";
-                translations.en.step2_text = "Our team evaluates your technical specifications and required quantities.";
-                translations.en.step3_title = "Commercial Proposal";
-                translations.en.step3_text = "We send you a detailed quote with pricing, terms and timelines.";
-                translations.en.step4_title = "Validation & Contract";
-                translations.en.step4_text = "Contract signing and logistics planning.";
-                translations.en.step5_title = "Delivery & Follow-up";
-                translations.en.step5_text = "Execution and continuous follow-up until final receipt.";
-                translations.en.start_collab = "Start Collaboration";
-            }
-
-
-
-            // Dictionnaire de traductions
-
-   
-
-
-
-            
     </script>
 </body>
 </html>
